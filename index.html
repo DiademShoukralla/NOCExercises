@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+    <script src="helper.js"></script>
+  </head>
+  <body>
+    <div class="tab">
+        <button class="tablink lvl1" onclick="loadChapter(this, 'Chapter1')">Chapter 1</button>
+        <button class="tablink lvl1" onclick="loadChapter(this, 'Chapter2')">Chapter 2</button>
+    </div>
+    <div class="sidenav">
+        <div id="Chapter1" class="tabcontent">
+            <div class="tab">
+                <button class="tablink lvl2" onclick="loadExercise(this, 'Exercise1')">Exercise 1</button>
+                <button class="tablink lvl2" onclick="loadExercise(this, 'Exercise2')">Exercise 2</button>
+            </div>
+        </div>
+        <div id="Chapter2" class="tabcontent">
+            <div class="tab">
+                <button class="tablink lvl2" onclick="loadExercise(this, 'Exercise1')">Exercise 1</button>
+                <button class="tablink lvl2" onclick="loadExercise(this, 'Exercise2')">Exercise 2</button>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <script src="sketch.js"></script>
+    </div>
+  </body>
+</html>
