@@ -1,12 +1,15 @@
 function loadChapter(element, chapterName) {
-    $('.tabcontent').hide();
-    $('.tablink').removeClass('active');
-    $('#'+chapterName).show();
+    $('.tabcontent').not('#'+chapterName).hide();
+    $('.tablink').not(element).removeClass('active');
+    $('#'+chapterName).toggle();
 
-    $(element).addClass('active');
+    $(element).toggleClass('active');
 }
 
-
+function loadExercise(element, exerciseName) {
+    $(".tablink.lvl2").removeClass('active');
+    $(element).addClass('active');
+}
 
 $(document).ready(function() {
     $('.tabcontent').hide();

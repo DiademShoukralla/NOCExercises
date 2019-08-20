@@ -41,13 +41,9 @@ canvas {
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
+  width: 15rem;
+  position: absolute;
 
-.sidenav {
-    width: 25%;
 }
 
 .tabcontent .tab button {
