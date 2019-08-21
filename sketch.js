@@ -19,6 +19,6 @@ function setup() {
     var intro = "Use the top bar menu to try out an exercise!";
     let time = millis();
     textSize(30);
-    text(intro, 400, 300);
+    text(intro, 10, 300);
     pop();
   }
