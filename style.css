@@ -55,3 +55,8 @@ canvas {
 .tabcontent .tab a {
     width: 100%;
 }
+
+a {
+  text-decoration: none;
+
+}
