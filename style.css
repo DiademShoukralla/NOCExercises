@@ -17,7 +17,8 @@ canvas {
 }
 
 /* Style the buttons inside the tab */
-.tab button {
+.tab button,
+.tab a {
   background-color: inherit;
   float: left;
   border: none;
@@ -29,12 +30,16 @@ canvas {
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.tab button:hover, a:hover {
   background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.tab button.active {
+.tab button.active,
+.tab a.active {
+  background-color: #ccc;
+}
+.tab .tablink a:active {
   background-color: #ccc;
 }
 
@@ -46,6 +51,7 @@ canvas {
 
 }
 
-.tabcontent .tab button {
+.tabcontent .tab button,
+.tabcontent .tab a {
     width: 100%;
 }
