@@ -5,33 +5,45 @@ let avgFitness = 0; // Average "fitness" score of the population.
 let phrase = ""; // Goal Phrase
 
 let phraseID = "phraseInput";
-let submitId = "submitButton";
+let submitID = "submitButton";
+let modalID = "modal";
+let canvasID = "canvas";
 
 let currentWords;
 let currentFitnesses;
 let wordWidth;
 
+let modal;
+
 let validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.'!?";
 
 function setup() {
-    createCanvas(800, 500);
+    createCanvas(800, 500).id(canvasID);
+
+    modal = createDiv();
+    modal.id(modalID);
+    modal.center();
 
     let phraseInput = createInput();
     phraseInput.attribute("placeholder", "Goal Phrase");
     phraseInput.id(phraseID);
+    phraseInput.parent(modal);
   
-    let startButton = createButton('Start Simulation');
+    let startButton = createButton('GO');
     startButton.mouseClicked(startSimulation);
-    startButton.id(submitId);
+    startButton.id(submitID);
+    startButton.parent(modal);
 
 }
   
 function draw() {
     background(220);
+    modal.show();
     if (currentWords) {
       drawAttributes();
       drawCurrentWords();
       update();
+      modal.hide();
     }
 }
 
@@ -51,6 +63,8 @@ function drawAttributes() {
   text("Mutation: " + getPercent(mutation), 0, order*10);
   order ++;
   text("Average Fitness: " + getPercent(avgFitness), 0, order*10);
+  fill('blue');
+  text("Press 'r' to restart", 50, 300);
   pop();
 }
 
@@ -183,4 +197,13 @@ function generateRandomWord(wordLength) {
     word += character;
   }
   return word;
+}
+
+function keyTyped() {
+  if(key === 'r' || key === 'R') {
+    currentWords = null;
+    currentFitnesses = null;
+    let phraseInput = select("#"+phraseID);
+    phraseInput.value("");
+  }
 }

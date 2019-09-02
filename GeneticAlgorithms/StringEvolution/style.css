@@ -1,0 +1,32 @@
+#modal {
+    position: absolute;
+    background-color: white;
+    height: 200px;
+    width: 400px;
+    left: -200px;
+    top: 0px;
+    z-index: 1;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 5px 5px 8px #888888;
+}
+
+#phraseInput {
+    padding: 5px;
+    margin: 5px;
+    line-height: 25px;
+    border-radius: 3px;
+    border: 1px solid lightgrey;
+}
+
+#submitButton {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid lightgrey;
+    margin: 5px;
+}
+
+#submitButton:hover {
+    cursor: pointer;
+}
