@@ -9,6 +9,7 @@ let submitId = "submitButton";
 
 let currentWords;
 let currentFitnesses;
+let wordWidth;
 
 let validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.'!?";
 
@@ -124,25 +125,6 @@ function generateChild(parent1, parent2) {
   return child;
 }
 
-// Mutate word with mutation rate
-function doMutate(word) {
-  let r = Math.random();
-  if (r < mutation) {
-    let index = Math.floor(Math.random() * word.length); // index to replace
-    let newWord = word.slice(0, index);
-    let newCharIndex = Math.floor(Math.random() * validCharacters.length);
-    newWord += validCharacters.charAt(newCharIndex);
-    newWord += word.slice(index+1);
-  }
-  return word;
-}
-
-// Compute child of parent1 and parent2
-// PreCondition: parent1 and parent2 are same length
-function doCrossOver(parent1, parent2) {
-
-}
-
 function drawCurrentWords() {
   push();
   let xCounter = 0;
@@ -158,13 +140,14 @@ function drawCurrentWords() {
     if (calculateFitness(currentWords[i]) == 1) {
       fill('red');
     }
-    text(currentWords[i], 200 + (xCounter*100), y);
+    text(currentWords[i], 200 + (xCounter*wordWidth), y);
     fill('black');
   }
   pop();
 }
 
 function startSimulation() {
+  totalGenerations = 1;
   let phraseInput = select("#"+phraseID);
   phrase = phraseInput.value();
   if(phrase.length == 0) {
@@ -189,6 +172,7 @@ function initializePopulation() {
     currentWords.push(word);
     currentFitnesses.push(calculateFitness(word));
   }
+  wordWidth = textWidth(currentWords[0]) + 25;
 }
 
 function generateRandomWord(wordLength) {
