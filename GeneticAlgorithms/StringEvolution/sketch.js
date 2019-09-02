@@ -26,6 +26,7 @@ function setup() {
   
 function draw() {
     background(220);
+    calculateFitness();
     drawAttributes();
     drawCurrentWords();
 }
@@ -49,10 +50,14 @@ function drawAttributes() {
   pop();
 }
 
+function calculateFitness() {
+
+}
+
 function drawCurrentWords() {
   push();
   let xCounter = 0;
-  let yCounter = 0;
+  let yCounter = 1;
   for(var i = 0; i< currentWords.length; i++) {
     y = yCounter*10;
     if(y >= height) {
@@ -91,6 +96,11 @@ function initializePopulation() {
 }
 
 function generateRandomWord(wordLength) {
-  let endPos = wordLength + 2;
-  return Math.random().toString(36).substring(2, endPos);
+  let word = "";
+  for(var i = 0; i < wordLength; i++) {
+    let index = Math.floor(Math.random()*validCharacters.length);
+    let character = validCharacters.charAt(index);
+    word += character;
+  }
+  return word;
 }
