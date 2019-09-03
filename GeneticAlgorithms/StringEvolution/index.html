@@ -28,6 +28,15 @@
     <div id="container">
         <script src="sketch.js"></script>
     </div>
+    <div id="modal">
+      <h2>String Evolution</h2>
+      <h6>Modify parameters:</h6>
+      <input type="text" placeholder="Population" id="populationInput">
+      <input type="text" placeholder="Mutation Rate" id="mutationInput"> %
+      <input type="text" placeholder="Goal Phrase" id="phraseInput">
+      
+      <button id="submitButton" onclick="return startSimulation();">GO</button>
+    </div>
     <script src="../../helper.js"></script>
   </body>
 </html>

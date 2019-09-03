@@ -8,10 +8,15 @@ let phraseID = "phraseInput";
 let submitID = "submitButton";
 let modalID = "modal";
 let canvasID = "canvas";
+let populationID = "populationInput";
+let mutationID = "mutationInput";
 
 let currentWords;
 let currentFitnesses;
 let wordWidth;
+
+let maxLength = 25;
+let maxPopulation = 300;
 
 let modal;
 
@@ -20,20 +25,10 @@ let validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.'!
 function setup() {
     createCanvas(800, 500).id(canvasID);
 
-    modal = createDiv();
-    modal.id(modalID);
-    modal.center();
-
-    let phraseInput = createInput();
-    phraseInput.attribute("placeholder", "Goal Phrase");
-    phraseInput.id(phraseID);
-    phraseInput.parent(modal);
-  
-    let startButton = createButton('GO');
-    startButton.mouseClicked(startSimulation);
-    startButton.id(submitID);
-    startButton.parent(modal);
-
+    modal = select("#"+modalID).center();
+    select("#"+phraseID).value(phrase);
+    select("#"+populationID).value(population);
+    select("#"+mutationID).value(mutation*100);
 }
   
 function draw() {
@@ -160,10 +155,21 @@ function drawCurrentWords() {
   pop();
 }
 
+/**
+ * Returns true iff the inputs are invalid.
+*/
+function validateInputs() {
+  return false;
+}
+
 function startSimulation() {
+  if (validateInputs()) {
+    return;
+  }
   totalGenerations = 1;
-  let phraseInput = select("#"+phraseID);
-  phrase = phraseInput.value();
+  phrase = select("#"+phraseID).value();
+  mutation = parseFloat(select("#"+mutationID).value()) / 100.00;
+  population = parseInt(select("#"+populationID).value());
   if(phrase.length == 0) {
     console.log("Phrase is empty. Please try again.");
     return;
@@ -200,10 +206,12 @@ function generateRandomWord(wordLength) {
 }
 
 function keyTyped() {
-  if(key === 'r' || key === 'R') {
-    currentWords = null;
-    currentFitnesses = null;
-    let phraseInput = select("#"+phraseID);
-    phraseInput.value("");
+  if (currentWords){
+    if(key === 'r' || key === 'R') {
+      currentWords = null;
+      currentFitnesses = null;
+      let phraseInput = select("#"+phraseID);
+      phraseInput.value("");
+    }
   }
 }

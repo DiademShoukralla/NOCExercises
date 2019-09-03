@@ -1,17 +1,15 @@
 #modal {
-    position: absolute;
+    position: fixed;
+    display: float;
     background-color: white;
     height: 200px;
     width: 400px;
-    left: -200px;
-    top: 0px;
-    z-index: 1;
     border-radius: 5px;
     border: 1px solid lightgrey;
     box-shadow: 5px 5px 8px #888888;
 }
 
-#phraseInput {
+input[type=text] {
     padding: 5px;
     margin: 5px;
     line-height: 25px;
@@ -29,4 +27,13 @@
 
 #submitButton:hover {
     cursor: pointer;
+}
+
+#modal h2 {
+    padding: 0px 5px; 
+}
+
+#modal h6 {
+    padding: 0px 5px;
+    margin: 0px;
 }
